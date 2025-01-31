@@ -4,11 +4,13 @@ import { useState } from 'react'
 import { config } from '../config'
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import { useRouter } from 'next/navigation'
 
 export default function SignIn() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
+    const router = useRouter()
 
 
     const handleSignIn = async () => {
@@ -20,6 +22,7 @@ export default function SignIn() {
             const response = await axios.post(`${config.apiUrl}/user/signin`, payload)
             if (response.data.token !== null) {
                 localStorage.setItem('token', response.data.token)
+                router.push('/backoffice/dashboard') //Navigation when click Sign in
             } else {
                 Swal.fire({
                     title: 'ตรวจสอบ user',
@@ -45,7 +48,6 @@ export default function SignIn() {
                 <input type="text"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)} />
-
                 <div className="mt-4">Password</div>
                 <input type="password"
                     value={password}
