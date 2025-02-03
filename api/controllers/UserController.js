@@ -21,5 +21,5 @@ const UserController = {
                 res.status(500).json({ massage : error.message })
             }
         }
-}
+    }
 module.exports = { UserController }

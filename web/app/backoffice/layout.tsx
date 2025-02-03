@@ -5,7 +5,7 @@ export default function BackOfficeLayout({ children }: {
     return (
         <div className='flex'>
             <Sidebar/>
-            <div className='flex '>
+            <div className='flex p-5 bg-gray-200 w-full h-screen '>
                 {children}
             </div>
         </div>
